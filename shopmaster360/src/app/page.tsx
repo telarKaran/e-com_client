@@ -15,7 +15,7 @@ export default function Home() {
         />
         <ol>
           <li>
-             started by telar karan <code>src/app/page.tsx</code>.
+             started by telar karan testing<code>src/app/page.tsx</code>.
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
