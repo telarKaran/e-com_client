@@ -15,7 +15,7 @@ export default function Home() {
         />
         <ol>
           <li>
-             started by karan <code>src/app/page.tsx</code>.
+             started by telar karan <code>src/app/page.tsx</code>.
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
@@ -58,7 +58,7 @@ export default function Home() {
             alt="File icon"
             width={16}
             height={16}
-          />i am fine
+          />thanks youdgdg
         </a>
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

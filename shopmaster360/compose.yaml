@@ -11,9 +11,6 @@ services:
   app:
     build:
       context: .
-    # If your application exposes a port, uncomment the following lines and change
-    # the port numbers as needed. The first number is the host port and the second
-    # is the port inside the container.
     ports:
       - 3000:3000
     develop:
@@ -25,6 +22,9 @@ services:
             - node_modules/
         - action: rebuild
           path: package.json
+
+
+
     # The commented out section below is an example of how to define a PostgreSQL
     # database that your application can use. `depends_on` tells Docker Compose to
     # start the database before your application. The `db-data` volume persists the
