@@ -1,7 +1,8 @@
 import Image from "next/image";
-// import styles from "./page.module.css";
+import { cookies } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
+  console.log((await cookies()).get("session "));
   return (
     <div>
       <h1 className="text-3xl font-bold underline">Hello</h1>
