@@ -1,8 +1,8 @@
-// services/authServices.ts
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
+import { DecodedToken } from "@/types";
+import { redirect } from "next/navigation";
 
-//
-// 1) Define your User interface
-//
 export interface User {
   id: string;
   name: string;
@@ -10,9 +10,6 @@ export interface User {
   role: string;
 }
 
-//
-// 2) Define the shapes of your success responses
-//
 interface SignUpResponse {
   message: string;
   user: User;
@@ -23,14 +20,6 @@ export interface SignInResponse {
   user: User;
 }
 
-//
-// 3) signUpUser - client-friendly function (no "use server" here)
-//    Makes a POST request to your backend to register a new user.
-//
-//    If you want to call this directly from a client component,
-//    import { signUpUser } from "@/services/authServices" in your client component
-//    and then call signUpUser(...) in a useEffect or event handler.
-//
 export async function signUpUser(
   name: string,
   email: string,
@@ -41,12 +30,11 @@ export async function signUpUser(
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: "include", // Include cookies if the server sets them
+    credentials: "include",
     body: JSON.stringify({ name, email, password }),
   });
 
   if (!response.ok) {
-    // Optionally parse error details from JSON:
     const errorData = await response.json().catch(() => ({}));
     const errorMessage = errorData?.message || "Failed to sign up";
     throw new Error(errorMessage);
@@ -62,7 +50,7 @@ export async function signInUser(
   const response = await fetch("http://localhost:8000/api/users/signin", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include", // Includes cookies if server sets them
+    credentials: "include",
     body: JSON.stringify({ email, password }),
   });
 
@@ -72,16 +60,26 @@ export async function signInUser(
     throw new Error(errorMessage);
   }
 
-  // Expected response format:
-  // {
-  //   "message": "Login successful",
-  //   "user": {
-  //     "id": "some-id",
-  //     "name": "John Doe",
-  //     "email": "john@example.com",
-  //     "role": "customer"
-  //   }
-  // }
   const data = (await response.json()) as SignInResponse;
   return data;
+}
+
+export async function requireAdmin() {
+  const cookieStore = cookies();
+  const token = (await cookieStore).get("token")?.value;
+  if (!token) {
+    redirect("/(auth)/sign-in");
+  }
+
+  try {
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_SECRET || "thisismykey"
+    ) as DecodedToken;
+    if (decoded.role !== "admin") {
+      redirect("/(site)");
+    }
+  } catch (error) {
+    redirect("/(auth)/sign-in");
+  }
 }

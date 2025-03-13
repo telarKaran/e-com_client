@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Laptop",
+      "description": "A fancy laptop for professionals",
+      "price": 1200,
+      "imageUrl": "https://media.istockphoto.com/id/1389603578/photo/laptop-blank-screen-on-wood-table-with-blurred-coffee-shop-cafe-interior-background-and.jpg?s=612x612&w=0&k=20&c=bPf3XxUZJZ6HRw7BE75ur1wBMCm_r4QAr-_lajERIyU="
+    },
+    {
+      "id": "2",
+      "name": "Headphones",
+      "description": "Noise-cancelling wireless headphones",
+      "price": 299,
+      "imageUrl": "https://media.istockphoto.com/id/1389603578/photo/laptop-blank-screen-on-wood-table-with-blurred-coffee-shop-cafe-interior-background-and.jpg?s=612x612&w=0&k=20&c=bPf3XxUZJZ6HRw7BE75ur1wBMCm_r4QAr-_lajERIyU="
+    },
+    {
+      "id": "3",
+      "name": "Smartphone",
+      "description": "High-end smartphone with powerful camera",
+      "price": 999,
+      "imageUrl": "https://via.placeholder.com/200?text=Smartphone"
+    },
+    {
+      "id": "4",
+      "name": "Gaming Mouse",
+      "description": "Ergonomic RGB gaming mouse",
+      "price": 59,
+      "imageUrl": "https://via.placeholder.com/200?text=Mouse"
+    },
+    {
+      "id": "",
+      "name": "table",
+      "description": "gdsdsg",
+      "price": 200,
+      "imageUrl": "https://images.meesho.com/images/products/389803059/ksy9g_1200.jpg"
+    },
+    {
+      "id": "",
+      "name": "table",
+      "description": "gdsdsg",
+      "price": 200,
+      "imageUrl": "https://images.meesho.com/images/products/389803059/ksy9g_1200.jpg"
+    }
+  ]
+}
